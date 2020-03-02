@@ -15,7 +15,7 @@ public class AuthPage extends BasePage {
     private String editUserMenuXpath = ".//a[@class='user-menu__edit']";
     private String nickInUserProfileXpath = ".//input[@class='ek-form-control' and @name='p_[NikName]']"; // Ваш ник (check value attribute)
     private String emailInUserProfileXpath = ".//input[@class='ek-form-control' and @name='p_[EMail]']"; // E-mail (check value attribute)
-    private String logOutLinkXpath = ".//a[@class='help2']";
+    private String logOutFromUserProfileLinkXpath = ".//a[@class='help2']";
 
     public String getAuthLinkXpath() {
         return authLinkXpath;
@@ -49,7 +49,7 @@ public class AuthPage extends BasePage {
         return emailInUserProfileXpath;
     }
 
-    public String getLogOutLinkXpath() {
-        return logOutLinkXpath;
+    public String getLogOutFromUserProfileLinkXpath() {
+        return logOutFromUserProfileLinkXpath;
     }
 }

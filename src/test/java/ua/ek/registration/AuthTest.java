@@ -3,6 +3,7 @@ package ua.ek.registration;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import ua.ek.model.User;
@@ -23,7 +24,7 @@ public class AuthTest extends BaseAuthTest {
     // Positive scenario
 
     @Test
-    public void authSuccessTestWithLogin(){
+    public void authSuccessfulTestWithLogin(){
 
         User user = getUserData();
 
@@ -34,14 +35,28 @@ public class AuthTest extends BaseAuthTest {
         authPage.getHelper().enterTextIntoTextField(passwordElement, user.getPassword());
 
         $(By.xpath(authPage.getSubmitButtonAuthXpath())).click();
-
         $(By.xpath(authPage.getNickXpath())).shouldHave(Condition.text("FL"));
+
+        $(By.xpath(authPage.getLogOutFromUserProfileLinkXpath())).click();
+        $(By.xpath(authPage.getLinkEnterXpath())).shouldHave(Condition.exactText("Войти"));
     }
 
-//    @Test
-//    public void authSuccessTestWithEmail(User user){
-//
-//    }
+    @Test
+    public void authSuccessfulTestWithEmail(){
+        User user = getUserData();
+
+        SelenideElement loginElement = $(By.xpath(authPage.getLoginOrEmailAuthFieldXpath()));
+        authPage.getHelper().enterTextIntoTextField(loginElement, user.getLogin());
+
+        SelenideElement passwordElement = $(By.xpath(authPage.getPasswordAuthFieldXpath()));
+        authPage.getHelper().enterTextIntoTextField(passwordElement, user.getPassword());
+
+        $(By.xpath(authPage.getSubmitButtonAuthXpath())).click();
+        $(By.xpath(authPage.getNickXpath())).shouldHave(Condition.text("FL"));
+
+        $(By.xpath(authPage.getLogOutFromUserProfileLinkXpath())).click();
+        $(By.xpath(authPage.getLinkEnterXpath())).shouldHave(Condition.exactText("Войти"));
+    }
 
     private User getUserData(){
         User user = new User();
