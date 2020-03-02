@@ -10,8 +10,8 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ManufacturersFilterTest extends BaseTabletsTest {
 
-    ManufacturersFilter manufacturersFilter = new ManufacturersFilter();
-    TabletsListPage tabletsListPage = new TabletsListPage();
+    private ManufacturersFilter manufacturersFilter = new ManufacturersFilter();
+    private TabletsListPage tabletsListPage = new TabletsListPage();
 
     @Test
     public void manufacturersFilterTest(){

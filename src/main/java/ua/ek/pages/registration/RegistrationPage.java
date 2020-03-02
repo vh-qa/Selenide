@@ -1,5 +1,7 @@
 package ua.ek.pages.registration;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import ua.ek.base.BasePage;
 
 public class RegistrationPage extends BasePage{
@@ -13,6 +15,11 @@ public class RegistrationPage extends BasePage{
     private String submitButtonXpath = ".//input[@name='new_reg_' and @class='l-but2']";
     private String userAgreementXpath = ".//input[@name='rules_accepted_']";
     private String closeLinkRegistrationFormXpath = ".//div[@class='jclose']";
+
+    // Locators for successful user registration
+    private String successfulUserRegistrationElement = ".//div[@class='l-div']/div[@class='l-ok']"; // Регистрация прошла успешно!
+    private String successfulUserRegistrationText = ".//div[@class='l-d2']";
+    private String successfulUserRegistrationButton = ".//input[@class='l-but2']"; // Подтвердить
 
     // Locators for error text links
     private String loginErrorElementXpath = ".//div[@class='l-err' and contains(text(), 'Имя')]"; // Заполните поле "Имя"
@@ -46,6 +53,18 @@ public class RegistrationPage extends BasePage{
 
     public String getCloseLinkRegistrationFormXpath() {
         return closeLinkRegistrationFormXpath;
+    }
+
+    public String getSuccessfulUserRegistrationElement() {
+        return successfulUserRegistrationElement;
+    }
+
+    public String getSuccessfulUserRegistrationText() {
+        return successfulUserRegistrationText;
+    }
+
+    public String getSuccessfulUserRegistrationButton() {
+        return successfulUserRegistrationButton;
     }
 
     public String getLoginErrorElementXpath() {

@@ -5,6 +5,7 @@ import ua.ek.utils.Helper;
 public abstract class BasePage {
 
     private String homePageUrl = "https://ek.ua/";
+
     private String linkEnterXpath = ".//span[@class='wu_entr']/em"; // 'Войти' link in the upper right corner of the page
 
     private String computersMenuLinkXpath = ".//ul[contains(@class,'mainmenu-list')]/li/a[contains(text(),'Компьютеры')]";

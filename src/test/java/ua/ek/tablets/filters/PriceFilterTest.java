@@ -11,8 +11,8 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class PriceFilterTest extends BaseTabletsTest {
 
-    PriceFilter priceFilter = new PriceFilter();
-    TabletsListPage tabletsListPage = new TabletsListPage();
+    private PriceFilter priceFilter = new PriceFilter();
+    private TabletsListPage tabletsListPage = new TabletsListPage();
 
     @Test
     public void priceFilterTest() {

@@ -9,13 +9,14 @@ import ua.ek.model.User;
 import ua.ek.pages.registration.AuthPage;
 import ua.ek.pages.registration.RegistrationPage;
 import ua.ek.registration.base.BaseAuthTest;
+import ua.ek.utils.DataGenerator;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 
 public class RegistrationTest extends BaseAuthTest {
 
-    RegistrationPage registrationPage = new RegistrationPage();
+    private RegistrationPage registrationPage = new RegistrationPage();
 
     @BeforeTest
     public void openRegistryFormBeforeTest(){
@@ -47,7 +48,7 @@ public class RegistrationTest extends BaseAuthTest {
     @Test
     public void emailFieldRegistrationFormTestIncorrectEmail() {
         SelenideElement selenideElement = $(By.xpath(registrationPage.getEmailFieldXpath()));
-        registrationPage.getHelper().enterTextIntoTextField(selenideElement, "some-email");
+        registrationPage.getHelper().enterTextIntoTextField(selenideElement, "some_email");
 
         $(By.xpath(registrationPage.getSubmitButtonXpath())).click();
         $(By.xpath(registrationPage.getEmailIncorrectErrorElementXpath()))
@@ -66,5 +67,21 @@ public class RegistrationTest extends BaseAuthTest {
 
     // Positive scenario
 
+    @Test
+    public void successfulUserRegistration() {
 
+        User user = DataGenerator.getUser();
+
+        SelenideElement login = $(By.xpath(registrationPage.getLoginFieldXpath()));
+        registrationPage.getHelper().enterTextIntoTextField(login, user.getLogin());
+
+        SelenideElement email = $(By.xpath(registrationPage.getEmailFieldXpath()));
+        registrationPage.getHelper().enterTextIntoTextField(email, user.getEmail());
+
+        SelenideElement password = $(By.xpath(registrationPage.getPasswordFieldXpath()));
+        registrationPage.getHelper().enterTextIntoTextField(password, user.getPassword());
+
+        $(By.xpath(registrationPage.getSubmitButtonXpath())).click();
+        $(By.xpath(registrationPage.getSuccessfulUserRegistrationElement())).shouldHave(text("Регистрация прошла успешно!"));
+    }
 }

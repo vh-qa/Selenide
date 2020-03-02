@@ -11,8 +11,8 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class DisplayDiagonalTest extends BaseTabletsTest {
 
-    DisplayDiagonalFilter displayDiagonalFilter = new DisplayDiagonalFilter();
-    TabletsListPage tabletsListPage = new TabletsListPage();
+    private DisplayDiagonalFilter displayDiagonalFilter = new DisplayDiagonalFilter();
+    private TabletsListPage tabletsListPage = new TabletsListPage();
 
     @Test
     public void displayDiagonalFilterTest() {
